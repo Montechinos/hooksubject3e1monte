@@ -1,11 +1,20 @@
-import { Text, View, Pressable } from "react-native";
-import { useState } from "react";
-import Ionicons from '@expo/vector-icons/Ionicons';
-
+import "@/global.css";
+import { View } from "react-native";
+import "@/Components/auth/Login.tsx"
+import Login from "@/Components/auth/Login";
 export default function Index() {
 
-  const [contador, setContador] = useState(0);// hook
 
+  return (
+    <View>
+      <Login />
+    </View>
+  )
+}
+
+
+//const [contador, setContador] = useState(0);// hook
+/*
   return (
     <View
       style={{
@@ -24,5 +33,4 @@ export default function Index() {
         </Pressable>
       </View>
     </View>
-  );
-}
+  );*/

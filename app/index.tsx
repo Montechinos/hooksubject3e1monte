@@ -1,13 +1,13 @@
+import "@/Components/auth/Login.tsx"
+import Login from "@/Components/auth/Login"
 import "@/global.css";
 import { View } from "react-native";
-import "@/Components/auth/Login.tsx"
-import Login from "@/Components/auth/Login";
 export default function Index() {
 
 
   return (
     <View>
-      <Login />
+      <Login/>
     </View>
   )
 }

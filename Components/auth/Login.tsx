@@ -1,100 +1,80 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  ImageBackground,
-} from "react-native";
+import { useEffect, useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 
-export default function Login({ navigation }: any) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+type status = "Activo"|"Resgistrando"|"Longueado"|"Esperando";
 
-  const handleLogin = () => {
-    console.log("Login pressed:", email, password);
-  };
+export default function Index() {
+
+  const [estadoUsuario, setEstadoUsuario] = useState <status>("Esperando");
+
+  useEffect(()=>{
+    if(estadoUsuario=="Esperando"){
+      Alert.alert("Bienvenido, espero tu respuesta");
+    }
+    return ()=>{
+      //lo que va a dispararse cuando se desmonte el componente
+    }
+  },[])//dependencias(causa) o lo q va a disparar mi efecto
 
   return (
-    <ImageBackground
-      source={require("../../assets/images/fondo.jpg")} // 👈 tu imagen
-      resizeMode="cover"
-      className="flex-1 justify-center items-center"
-    >
-      {/* 🔲 Cuadro principal centrado */}
-      <View className="bg-white w-80 rounded-3xl p-8 shadow-2xl items-center">
+    <View className='flex-1 bg-black px-6 justify-center'>
+      <Text className="text-blue-400 text-3xl font-bold mb-8 text-center">
+        Formulario
+      </Text>
 
-        {/* Título */}
-        <Text className="text-3xl font-bold text-center mb-6 text-black">
-          LOGIN
-        </Text>
-
-        {/* Input Email */}
-        <TextInput
-          placeholder="Email"
-          placeholderTextColor="#888"
-          value={email}
-          onChangeText={setEmail}
-          className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 text-black bg-white"
-        />
-
-        {/* Input Password */}
-        <TextInput
-          placeholder="Password"
-          placeholderTextColor="#888"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-          className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-6 text-black bg-white"
-        />
-
-        {/* Botón LOGIN */}
-        <TouchableOpacity
-          onPress={handleLogin}
-          className="w-full bg-pink-500 py-3 rounded-xl mb-6"
-        >
-          <Text className="text-white font-bold text-center text-lg">
-            LOGIN
+      <View className="space-y-4">
+        <View>
+          <Text className="text-blue-300 mb-2 text-sm font-medium">
+            Nombre
           </Text>
-        </TouchableOpacity>
-
-        {/* 🔲 Bloque de iconos */}
-        <View className="flex-row justify-center items-center space-x-6 bg-gray-100 py-4 px-4 rounded-xl mb-6 w-full">
-          {/* Google */}
-          <TouchableOpacity
-            onPress={() => console.log("Google pressed")}
-            className="w-14 h-14 bg-white rounded-xl justify-center items-center shadow"
-          >
-            <Image
-              source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" }}
-              className="w-8 h-8"
-            />
-          </TouchableOpacity>
-
-          {/* Facebook */}
-          <TouchableOpacity
-            onPress={() => console.log("Facebook pressed")}
-            className="w-14 h-14 bg-white rounded-xl justify-center items-center shadow"
-          >
-            <Image
-              source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" }}
-              className="w-8 h-8"
-            />
-          </TouchableOpacity>
+          <TextInput
+            className="bg-blue-950 border border-blue-700 rounded-lg px-4 py-3 text-white"
+            placeholderTextColor="#60a5fa"
+            placeholder="Ingresa tu nombre"
+          />
         </View>
 
-        {/* Ir al registro */}
-        <Text className="text-center text-sm text-gray-600">
-          ¿No tienes cuenta?{" "}
-          <Text
-            className="text-pink-500 font-bold"
-            onPress={() => navigation.navigate("SignUp")}
-          >
-            Regístrate
+        <View>
+          <Text className="text-blue-300 mb-2 text-sm font-medium">
+            Email
           </Text>
-        </Text>
+          <TextInput
+            className="bg-blue-950 border border-blue-700 rounded-lg px-4 py-3 text-white"
+            placeholderTextColor="#60a5fa"
+            placeholder="correo@ejemplo.com"
+          />
+        </View>
+
+        <View>
+          <Text className="text-blue-300 mb-2 text-sm font-medium">
+            Teléfono
+          </Text>
+          <TextInput
+            className="bg-blue-950 border border-blue-700 rounded-lg px-4 py-3 text-white"
+            placeholderTextColor="#60a5fa"
+            placeholder="+593 99 999 9999"
+          />
+        </View>
+
+        <View>
+          <Text className="text-blue-300 mb-2 text-sm font-medium">
+            Mensaje
+          </Text>
+          <TextInput
+            className="bg-blue-950 border border-blue-700 rounded-lg px-4 py-3 text-white"
+            placeholderTextColor="#60a5fa"
+            placeholder="Escribe tu mensaje"
+            multiline
+            numberOfLines={4}
+          />
+        </View>
+
+        <TouchableOpacity className="bg-blue-600 rounded-lg py-4 mt-6">
+          <Text className="text-white text-center font-semibold text-lg">
+            Enviar
+          </Text>
+        </TouchableOpacity>
       </View>
-    </ImageBackground>
+    </View>
   );
 }

@@ -8,12 +8,12 @@ import {
   ImageBackground,
 } from "react-native";
 
-export default function Login({ navigation }: any) {
+export default function SignUp({ navigation }: any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    console.log("Login pressed:", email, password);
+  const handleSignUp = () => {
+    console.log("SignUp pressed:", email, password);
   };
 
   return (
@@ -27,7 +27,7 @@ export default function Login({ navigation }: any) {
 
         {/* Título */}
         <Text className="text-3xl font-bold text-center mb-6 text-black">
-          LOGIN
+          SIGN UP
         </Text>
 
         {/* Input Email */}
@@ -49,13 +49,13 @@ export default function Login({ navigation }: any) {
           className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-6 text-black bg-white"
         />
 
-        {/* Botón LOGIN */}
+        {/* Botón SIGN UP */}
         <TouchableOpacity
-          onPress={handleLogin}
+          onPress={handleSignUp}
           className="w-full bg-pink-500 py-3 rounded-xl mb-6"
         >
           <Text className="text-white font-bold text-center text-lg">
-            LOGIN
+            SIGN UP
           </Text>
         </TouchableOpacity>
 
@@ -84,14 +84,14 @@ export default function Login({ navigation }: any) {
           </TouchableOpacity>
         </View>
 
-        {/* Ir al registro */}
+        {/* Ir al login */}
         <Text className="text-center text-sm text-gray-600">
-          ¿No tienes cuenta?{" "}
+          ¿Ya tienes cuenta?{" "}
           <Text
             className="text-pink-500 font-bold"
-            onPress={() => navigation.navigate("SignUp")}
+            onPress={() => navigation.navigate("Login")}
           >
-            Regístrate
+            Inicia sesión
           </Text>
         </Text>
       </View>

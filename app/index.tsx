@@ -1,13 +1,20 @@
 import "@/Components/auth/Login.tsx"
 import Login from "@/Components/auth/Login"
 import "@/global.css";
-import { View } from "react-native";
+import { TouchableOpacity, View, Text } from "react-native";
+import { Link, router } from "expo-router";
+import * as Haptics from 'expo-haptics';
 export default function Index() {
 
 
   return (
     <View>
-      <Login/>
+      <TouchableOpacity onPress={() => {
+        router.push("/DashboardScreen");
+        Haptics.selectionAsync()
+}} className="p-4 bg-black rounded-full">
+        <Text className="text-white text-2x1 font-bold">Hola</Text>
+      </TouchableOpacity>
     </View>
   )
 }

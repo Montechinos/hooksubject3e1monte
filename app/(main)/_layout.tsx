@@ -7,7 +7,6 @@ const Mainlayout = () => {
   return (<Stack screenOptions={{ 
     headerStyle:{
       backgroundColor:"blue"
-
     }
     }}>
     <Stack.Screen name='DashboardScreen' options={{

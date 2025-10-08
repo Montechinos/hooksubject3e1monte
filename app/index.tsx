@@ -1,21 +1,23 @@
 import "@/Components/auth/Login.tsx"
 import Login from "@/Components/auth/Login"
 import "@/global.css";
-import { TouchableOpacity, View, Text } from "react-native";
+import { TouchableOpacity, View, Text, Image } from "react-native";
 import { Link, router } from "expo-router";
 import * as Haptics from 'expo-haptics';
+import { SafeAreaView } from "react-native-safe-area-context";
 export default function Index() {
 
 
   return (
-    <View>
+    <SafeAreaView className='flex-1 justify-center items-center bg-gray-500'>
+      
       <TouchableOpacity onPress={() => {
         router.push("/DashboardScreen");
         Haptics.selectionAsync()
-}} className="p-4 bg-black rounded-full">
-        <Text className="text-white text-2x1 font-bold">Hola</Text>
+}} className="p-4 bg-green-500 rounded-full w-full mt-16 justify-center items-center shadow-lg shadow-black">
+        <Text className="text-white text-2x1 font-bold">Escuchar musica</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   )
 }
 
